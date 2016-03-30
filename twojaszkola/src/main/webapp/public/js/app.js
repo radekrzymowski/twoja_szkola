@@ -76,6 +76,7 @@ var biking2 = angular
 				templateUrl: '/partials/_uczen.html',
 				controller: 'UczenCtrl'
 			    }).
+                            
                             when('/szkola', {
 				templateUrl: '/partials/_szkola.html',
 				controller: 'SzkolaCtrl'

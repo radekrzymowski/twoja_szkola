@@ -95,7 +95,10 @@ biking2Controllers.controller('AddNewUczenCtrl', ['$scope', '$modalInstance', '$
 	id: null,
         pesel: null,
         name: null,
-	lastname: null
+	lastname: null,
+        mail: null,
+        password: null,
+        kod_pocztowy: null
     };
 
     $scope.cancel = function() {
@@ -116,12 +119,13 @@ biking2Controllers.controller('AddNewUczenCtrl', ['$scope', '$modalInstance', '$
 	    if (status === 400)
 		$scope.badRequest = data;
             else if (status === 409)
-                $scope.badRequest = 'The name is already used.';
+                $scope.badRequest = 'Uczen o takim numerze pesel juz istnieje';
 	});
     };
 }]);
 
-//szkola
+//SZKOLA
+
 biking2Controllers.controller('SzkolaCtrl', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
     $http.get('/api/szkola?all=true').success(function(data) {
 	$scope.szkola = data;
@@ -149,7 +153,7 @@ biking2Controllers.controller('AddNewSzkolaCtrl', ['$scope', '$modalInstance', '
 	id: null,
         name: null,
         mail: null,
-	password: null,
+        password: null,
         adres: null,
         kod_pocztowy: null
     };
@@ -172,13 +176,10 @@ biking2Controllers.controller('AddNewSzkolaCtrl', ['$scope', '$modalInstance', '
 	    if (status === 400)
 		$scope.badRequest = data;
             else if (status === 409)
-                $scope.badRequest = 'The name is already used.';
+                $scope.badRequest = 'Szkola o takim numerze pesel juz istnieje';
 	});
     };
 }]);
-
-
-
 
 
 biking2Controllers.controller('AddNewBikeCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http) {

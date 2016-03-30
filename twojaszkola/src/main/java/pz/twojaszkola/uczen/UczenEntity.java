@@ -61,13 +61,31 @@ public class UczenEntity implements Serializable {
     @Size(max = 255)
     private String lastname;
 
+    @Column(name = "mail", length = 255, nullable = false)
+    @NotBlank //niepusty
+    @Size(max = 255)
+    private String mail;
+    
+    @Column(name = "password", nullable = false)
+    @NotBlank //niepusty
+    @Size(min=5, max = 25)
+    private String password;
+    
+    @Column(name = "kod_pocztowy", nullable = false)
+    @NotBlank //niepusty
+    @Size(min=6, max = 6)
+    private String kod_pocztowy;
+    
     protected UczenEntity() {
     }
     
-    public UczenEntity(String pesel, String name, String lastname) {
+    public UczenEntity(String pesel, String name, String lastname, String mail, String password, String kod_pocztowy) {
         this.pesel=pesel;
         this.name = name;
         this.lastname = lastname;
+        this.mail = mail;
+        this.password = password;
+        this.kod_pocztowy = kod_pocztowy;
     }
     
     public Integer getId() {
@@ -101,6 +119,30 @@ public class UczenEntity implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getKod_pocztowy() {
+        return kod_pocztowy;
+    }
+
+    public void setKod_pocztowy(String kod_pocztowy) {
+        this.kod_pocztowy = kod_pocztowy;
+    }
     
     @Override
     public int hashCode() {
@@ -123,6 +165,5 @@ public class UczenEntity implements Serializable {
 	}
 	return true;
     }
-    
     
 }

@@ -50,7 +50,7 @@ public class UczenController {
         @RequestMapping(value = "/uczen", method = GET)
         public List<UczenEntity> getUczen(final @RequestParam(required = false, defaultValue = "false") boolean all) {
             List<UczenEntity> rv;
-            rv = uczenRepository.findAll(new Sort(Sort.Direction.ASC, "pesel", "name", "lastname"));
+            rv = uczenRepository.findAll(new Sort(Sort.Direction.ASC, "pesel", "name", "lastname", "mail"));
             return rv;
         }
         
@@ -61,7 +61,7 @@ public class UczenController {
                 throw new IllegalArgumentException("Invalid arguments.");
             }
 	
-            final UczenEntity uczen = new UczenEntity(newUczen.getPesel(), newUczen.getName(), newUczen.getLastname());
+            final UczenEntity uczen = new UczenEntity(newUczen.getPesel(), newUczen.getName(), newUczen.getLastname(), newUczen.getMail(), newUczen.getPassword(), newUczen.getKod_pocztowy());
             return this.uczenRepository.save(uczen);	
         }
         

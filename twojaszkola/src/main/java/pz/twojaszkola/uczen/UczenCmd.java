@@ -42,6 +42,18 @@ public class UczenCmd {
     @Size(max = 255)
     private String lastname;
 
+    @NotBlank //niepusty
+    @Size(max = 255)
+    private String mail;
+    
+    @NotBlank //niepusty
+    @Size(min=5, max = 25)
+    private String password;
+    
+    @NotBlank //niepusty
+    @Size(min=6, max = 6)
+    private String kod_pocztowy;
+    
     public String getPesel() {
         return pesel;
     }
@@ -65,7 +77,29 @@ public class UczenCmd {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-    
-    
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getKod_pocztowy() {
+        return kod_pocztowy;
+    }
+
+    public void setKod_pocztowy(String kod_pocztowy) {
+        this.kod_pocztowy = kod_pocztowy;
+    }
     
 }

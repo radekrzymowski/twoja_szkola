@@ -49,7 +49,7 @@ public class SzkolaController {
         }
         
         @RequestMapping(value = "/szkola", method = GET)
-        public List<SzkolaEntity> getUczen(final @RequestParam(required = false, defaultValue = "false") boolean all) {
+        public List<SzkolaEntity> getSzkola(final @RequestParam(required = false, defaultValue = "false") boolean all) {
             List<SzkolaEntity> rv;
             rv = szkolaRepository.findAll(new Sort(Sort.Direction.ASC, "name", "mail", "password", "adres", "kod_pocztowy"));
             return rv;
@@ -67,10 +67,10 @@ public class SzkolaController {
             return this.szkolaRepository.save(szkola);	
         }
         
-        @RequestMapping(value = "/uczen/{id:\\d+}", method = PUT)
+        @RequestMapping(value = "/szkola/{id:\\d+}", method = PUT)
         @PreAuthorize("isAuthenticated()")
         @Transactional
-        public SzkolaEntity updateSzkola(final @PathVariable Integer id, final @RequestBody @Valid SzkolaCmd updatedUczen, final BindingResult bindingResult) {
+        public SzkolaEntity updateSzkola(final @PathVariable Integer id, final @RequestBody @Valid SzkolaCmd updatedSzkola, final BindingResult bindingResult) {
             if(bindingResult.hasErrors()) {
                 throw new IllegalArgumentException("Invalid arguments.");
             }
