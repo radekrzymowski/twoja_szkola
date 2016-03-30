@@ -95,10 +95,7 @@ biking2Controllers.controller('AddNewUczenCtrl', ['$scope', '$modalInstance', '$
 	id: null,
         pesel: null,
         name: null,
-	lastname: null,
-        mail: null,
-        password: null,
-        kod_pocztowy: null
+	lastname: null
     };
 
     $scope.cancel = function() {
@@ -119,106 +116,14 @@ biking2Controllers.controller('AddNewUczenCtrl', ['$scope', '$modalInstance', '$
 	    if (status === 400)
 		$scope.badRequest = data;
             else if (status === 409)
-                $scope.badRequest = 'Uczen o takim numerze pesel juz istnieje';
+                $scope.badRequest = 'The name is already used.';
 	});
     };
 }]);
 
-<<<<<<< HEAD
-//SZKOLA
 
-biking2Controllers.controller('SzkolaCtrl', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
-    $http.get('/api/szkola?all=true').success(function(data) {
-	$scope.szkola = data;
-    });
 
-    $scope.openNewSzkolaDlg = function() {
-	var modalInstance = $modal.open({
-	    templateUrl: '/partials/_new_szkola.html',
-	    controller: 'AddNewSzkolaCtrl',
-=======
-biking2Controllers.controller('SzkolaCtrl', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
-    $http.get('/api/szkola?all=true').success(function(data) {
-	$scope.uczen = data;
-    });
 
-    $scope.openNewUczenDlg = function() {
-	var modalInstance = $modal.open({
-	    templateUrl: '/partials/_new_szkola.html',
-	    controller: 'AddNewszkolaCtrl',
->>>>>>> origin/master
-	    scope: $scope
-	});
-
-	modalInstance.result.then(
-<<<<<<< HEAD
-		function(newSzkola) {
-		    $scope.szkola.push(newSzkola);
-=======
-		function(newUczen) {
-		    $scope.uczen.push(newUczen);
->>>>>>> origin/master
-		},
-		function() {
-		}
-	);
-    };
-}]);
-
-biking2Controllers.controller('AddNewSzkolaCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http) {
-<<<<<<< HEAD
-    $scope.szkola = {
-	id: null,
-        name: null,
-        mail: null,
-        password: null,
-        adres: null,
-=======
-    $scope.uczen = {
-	id: null,
-        name: null,
-        mail: null,
-        adres: null,
-        password: null,
->>>>>>> origin/master
-        kod_pocztowy: null
-    };
-
-    $scope.cancel = function() {
-	$modalInstance.dismiss('cancel');
-    };
-
-    $scope.submit = function() {
-	$scope.submitting = true;
-	$http({
-	    method: 'POST',
-	    url: '/api/szkola',
-<<<<<<< HEAD
-	    data: $scope.szkola
-=======
-	    data: $scope.uczen
->>>>>>> origin/master
-	}).success(function(data) {
-	    $scope.submitting = false;
-	    $modalInstance.close(data);
-	}).error(function(data, status) {
-	    $scope.submitting = false;
-	    if (status === 400)
-		$scope.badRequest = data;
-            else if (status === 409)
-<<<<<<< HEAD
-                $scope.badRequest = 'Szkola o takim numerze pesel juz istnieje';
-=======
-                $scope.badRequest = 'szkola o takiej nazwie juz istnieje';
->>>>>>> origin/master
-	});
-    };
-}]);
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 biking2Controllers.controller('AddNewBikeCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http) {
     $scope.bike = {
 	name: null,
