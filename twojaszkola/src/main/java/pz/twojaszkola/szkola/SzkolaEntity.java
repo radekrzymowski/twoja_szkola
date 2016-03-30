@@ -36,6 +36,19 @@ import org.hibernate.validator.constraints.NotBlank;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class SzkolaEntity implements Serializable {
 
+    protected SzkolaEntity()
+    {
+        
+    }
+    
+    public SzkolaEntity(String name, String mail, String password, String adres, String kod_pocztowy) {
+        this.name = name;
+        this.mail = mail;
+        this.password = password;
+        this.adres = adres;
+        this.kod_pocztowy = kod_pocztowy;
+    }
+
     private static final long serialVersionUID = 0001L;
     @Id
     @Column(name = "Id")

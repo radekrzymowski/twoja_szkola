@@ -121,6 +121,66 @@ biking2Controllers.controller('AddNewUczenCtrl', ['$scope', '$modalInstance', '$
     };
 }]);
 
+//szkola
+biking2Controllers.controller('SzkolaCtrl', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
+    $http.get('/api/szkola?all=true').success(function(data) {
+	$scope.szkola = data;
+    });
+
+    $scope.openNewSzkolaDlg = function() {
+	var modalInstance = $modal.open({
+	    templateUrl: '/partials/_new_szkola.html',
+	    controller: 'AddNewSzkolaCtrl',
+	    scope: $scope
+	});
+
+	modalInstance.result.then(
+		function(newSzkola) {
+		    $scope.szkola.push(newSzkola);
+		},
+		function() {
+		}
+	);
+    };
+}]);
+
+biking2Controllers.controller('AddNewSzkolaCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http) {
+    $scope.szkola = {
+	id: null,
+        name: null,
+        mail: null,
+	password: null,
+        adres: null,
+        kod_pocztowy: null
+    };
+
+    $scope.cancel = function() {
+	$modalInstance.dismiss('cancel');
+    };
+
+    $scope.submit = function() {
+	$scope.submitting = true;
+	$http({
+	    method: 'POST',
+	    url: '/api/szkola',
+	    data: $scope.szkola
+	}).success(function(data) {
+	    $scope.submitting = false;
+	    $modalInstance.close(data);
+	}).error(function(data, status) {
+	    $scope.submitting = false;
+	    if (status === 400)
+		$scope.badRequest = data;
+            else if (status === 409)
+                $scope.badRequest = 'The name is already used.';
+	});
+    };
+}]);
+
+
+
+
+
 biking2Controllers.controller('AddNewBikeCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http) {
     $scope.bike = {
 	name: null,
