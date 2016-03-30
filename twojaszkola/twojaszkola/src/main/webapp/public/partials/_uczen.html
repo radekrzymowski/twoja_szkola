@@ -16,13 +16,16 @@
                             <th>Pesel</th>
 			    <th>Name</th>
 			    <th>Lastname</th>
+                            <th>Mail</th>
+                            
 			</tr>
 		    </thead>
 		    <tbody>
-			<tr ng-repeat="u in uczen | orderBy:['pesel', 'name', 'lastname']">
+			<tr ng-repeat="u in uczen | orderBy:['pesel', 'name', 'lastname', 'mail']">
 			    <td>{{ u.pesel }}</td>
                             <td>{{ u.name }}</td>
 			    <td>{{ u.lastname }}</td>
+                            <td>{{ u.mail }}</td>
                         </tr>
 		    </tbody>
 		</table>

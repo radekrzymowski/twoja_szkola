@@ -95,7 +95,10 @@ biking2Controllers.controller('AddNewUczenCtrl', ['$scope', '$modalInstance', '$
 	id: null,
         pesel: null,
         name: null,
-	lastname: null
+	lastname: null,
+        mail: null,
+        password: null,
+        kod_pocztowy: null
     };
 
     $scope.cancel = function() {
